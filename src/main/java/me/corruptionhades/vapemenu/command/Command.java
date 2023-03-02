@@ -14,7 +14,6 @@ public abstract class Command {
     private List<String> aliases;
     public ChatUtils chat = new ChatUtils();
     public MinecraftClient mc = MinecraftClient.getInstance();
-    public String prefix = "#";
 
     public Command(String name, String description, String...aliases) {
         this.name = name;

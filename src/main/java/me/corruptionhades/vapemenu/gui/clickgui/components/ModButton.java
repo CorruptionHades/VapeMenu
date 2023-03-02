@@ -10,7 +10,6 @@ import me.corruptionhades.vapemenu.setting.Setting;
 import me.corruptionhades.vapemenu.utils.Animation;
 import me.corruptionhades.vapemenu.utils.RenderUtils;
 import me.corruptionhades.vapemenu.utils.Theme;
-import me.corruptionhades.vapemenu.utils.TimerUtil;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 
@@ -20,27 +19,31 @@ import java.util.List;
 
 public class ModButton {
 
+    // Module the Mod button will use
     private final Module module;
+    // Coords of the button
     private double x, y;
+    // Parent access
     private final VapeClickGui parent;
 
+    // Minecraft access
     private final MinecraftClient mc = MinecraftClient.getInstance();
 
-    private TimerUtil settingsTimer = new TimerUtil();
+    // List of all setting components
+    private final List<Component> components = new ArrayList<>();
 
-    private final List<me.corruptionhades.vapemenu.gui.clickgui.components.Component> components = new ArrayList<>();
-
-    private Animation toggleAnim;
+    // Toggle animation
+    private final Animation toggleAnim;
 
     public ModButton(Module module, double x, double y, VapeClickGui parent) {
         this.module = module;
         this.y = y;
         this.x = x;
         this.parent = parent;
-        components.clear();
         toggleAnim = new Animation(0, 10);
     }
 
+    // Drawing method
     public void drawScreen(MatrixStack matrices, int mouseX, int mouseY, float delta) {
 
         x = parent.settingsFieldX;
@@ -67,25 +70,29 @@ public class ModButton {
         mc.textRenderer.draw(matrices,".", parent.windowX + (float) x + 416 + parent.coordModX, (float) (parent.windowY + y - 1), Theme.MODULE_TEXT.getRGB());
         mc.textRenderer.draw(matrices,".", parent.windowX + (float) x + 416 + parent.coordModX, (float) (parent.windowY + y + 3), Theme.MODULE_TEXT.getRGB());
 
-        // Bob the description forth a bit
+        // Bob the description forth a bit TODO: align it to the Module Name's length
         if (isHovered(parent.windowX + (float) x + 100 + parent.coordModX, parent.windowY + (float) y - 10, parent.windowX + (float) x + 425 + parent.coordModX, (float) (parent.windowY + y + 25), mouseX, mouseY)) {
             mc.textRenderer.draw(matrices, module.getDescription() + ".", parent.windowX + (float) x + 225 + parent.coordModX, parent.windowY + (float) (y + 5), Theme.MODULE_TEXT.getRGB());
         } else {
             mc.textRenderer.draw(matrices, module.getDescription() + ".", parent.windowX + (float) x + 220 + parent.coordModX, parent.windowY + (float) (y + 5), Theme.MODULE_TEXT.getRGB());
         }
 
+        // Update the animation value
         toggleAnim.update();
+
         if (module.isEnabled()) {
+            // Draw the Module name
             mc.textRenderer.draw(matrices,module.getName(), parent.windowX + (float) x + 140 + parent.coordModX, (float) (parent.windowY + y + 5), Theme.NORMAL_TEXT_COLOR.getRGB());
             RenderUtils.renderRoundedQuad(matrices, parent.windowX + (float) x + 100 + parent.coordModX, parent.windowY + y - 10, parent.windowX + (float) x + 125 + parent.coordModX, parent.windowY + y + 25, 5, 20, new Color(41, 117, 221, (int) ((toggleAnim.getValue() * 10) / 100f * 255)));
+
             toggleAnim.setEnd(10);
 
             RenderUtils.renderRoundedQuad(matrices, parent.windowX + (float) x + 380 + parent.coordModX, parent.windowY + y + 2, parent.windowX + (float) x + 400 + parent.coordModX, parent.windowY + y + 12, 4, 5, new Color(33, 94, 181, (int) ((toggleAnim.getValue() * 10) / 100f * 255)));
-
             RenderUtils.drawCircle(matrices,parent.windowX + x + parent.coordModX + 385 + toggleAnim.getValue(), parent.windowY + y + 7, 3.5, 20, Theme.NORMAL_TEXT_COLOR.getRGB());
         }
         else {
             mc.textRenderer.draw(matrices, module.getName(), parent.windowX + (float) x + 140 + parent.coordModX, parent.windowY + (float) (y + 5), Theme.MODULE_TEXT.getRGB());
+
             toggleAnim.setEnd(0);
 
             RenderUtils.renderRoundedQuad(matrices, parent.windowX + (float) x + 380 + parent.coordModX, parent.windowY + y + 2, parent.windowX + (float) x + 400 + parent.coordModX, parent.windowY + y + 12, 4, 5, Theme.TOGGLE_BUTTON_BG);
@@ -93,6 +100,7 @@ public class ModButton {
             RenderUtils.drawCircle(matrices, parent.windowX + x + parent.coordModX + 385 + toggleAnim.getValue(), parent.windowY + y + 7, 3.5, 20, Theme.TOGGLE_BUTTON_BG);
         }
 
+        // Update Y Component values
         float settingsY = parent.windowY + 100 + parent.settingsFNow;
         for(Component component : components) {
             if(component instanceof CheckBox cb) cb.setY(settingsY);
@@ -101,14 +109,16 @@ public class ModButton {
             settingsY += 25;
         }
 
+        // Only draw components when the module is expanded
         if(module.isExpanded()) components.forEach(c -> c.drawScreen(matrices, mouseX, mouseY, delta));
     }
 
     public void mouseClicked(double mouseX, double mouseY, int button) {
+        // Toggle the module
         if (isHovered(parent.windowX + (float) x + 100 + parent.coordModX, parent.windowY + (float) y - 10, parent.windowX + (float) x + 425 + parent.coordModX, parent.windowY + (float) y + 25, mouseX, mouseY) && button == 0) {
             module.toggle();
-            settingsTimer.reset();
         }
+        // Show Settings
         else if(isHovered(parent.windowX + (float) x + 100 + parent.coordModX, parent.windowY + (float) y - 10, parent.windowX + (float) x + 425 + parent.coordModX, parent.windowY + (float) y + 25, mouseX, mouseY) && button == 1) {
 
             if(parent.selectedModule != null && parent.selectedModule != module) {

@@ -1,5 +1,6 @@
 package me.corruptionhades.vapemenu.mixin;
 
+import me.corruptionhades.vapemenu.VapeMenu;
 import me.corruptionhades.vapemenu.command.Command;
 import me.corruptionhades.vapemenu.command.CommandManager;
 import me.corruptionhades.vapemenu.event.impl.CommandSuggestEvent;
@@ -36,7 +37,7 @@ public abstract class ClientPlayNetworkHandlerMixin {
         }
         String[] args = CMD.toString().split(" ");
 
-        if(msg.startsWith("#")) {
+        if(msg.startsWith(VapeMenu.getCommandPrefix())) {
             for(Command command : CommandManager.INSTANCE.getCmds()) {
                 if(args[0].equalsIgnoreCase(command.getName())) {
                     command.onCmd(msg, args);
