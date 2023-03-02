@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "vape_menu",
+  "version": "${version}",
+  "name": "VapeMenu",
+  "description": "",
+  "authors": [
+    "CorruptionHades"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "me.corruptionhades.vapemenu.client.VapeMenuClient"
+    ],
+    "main": [
+      "me.corruptionhades.vapemenu.VapeMenu"
+    ]
+  },
+  "mixins": [
+    "VapeMenu.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.14",
+    "fabric": "*",
+    "minecraft": "1.19.3"
+  }
+}
