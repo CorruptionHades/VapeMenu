@@ -11,7 +11,7 @@ Features:
 Credits:
   - Coffee Client for their rounded Utils: https://github.com/business-goose/Coffee/tree/master
   - Hexceptions Event System: https://github.com/Hexeption
-  - The Original Clickgui from SuperSkidder: https://github.com/SuperSkidder?tab=repositories
+  - The Original Clickgui from SuperSkidder: https://github.com/SuperSkidder/VapeLiteGui
 
 
 License: GNU GPL v3.0
