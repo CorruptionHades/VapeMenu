@@ -6,7 +6,7 @@ Features:
   - Module System (Including Hud Modules)
   - Command System
   - Working Config system
-  - Vape Clickgui
+  - Vape Based Clickgui
 
 Credits:
   - Coffee Client for their rounded Utils: https://github.com/business-goose/Coffee/tree/master
