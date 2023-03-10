@@ -13,6 +13,7 @@ Credits:
   - Hexceptions Event System: https://github.com/Hexeption
   - The Original Clickgui from SuperSkidder: https://github.com/SuperSkidder/VapeLiteGui
 
+Please Credit me if you wish to use this.
 
 License: GNU GPL v3.0
 
