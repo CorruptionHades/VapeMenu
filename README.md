@@ -15,6 +15,8 @@ Credits:
 
 Please Credit me if you wish to use this.
 
+If you need support, message me on discord CorruptionHades#6712
+
 License: GNU GPL v3.0
 
 This project is subject to the GNU General Public License v3.0. This does only apply for source code located directly in this clean repository. During the development and compilation process, additional source code may be used to which we have obtained no rights. Such code is not covered by the GPL license.
