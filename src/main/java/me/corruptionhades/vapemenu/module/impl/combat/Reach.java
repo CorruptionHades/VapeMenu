@@ -44,7 +44,7 @@ public class Reach extends Module {
                 return;
             }
 
-            setDisplayName(target.getName().getString());
+            setDisplayName(getName() + "[" + maxDistance.getValue() + "]" + " [" + target.getName().getString() + "]");
 
             Vec3d block_pos = new Vec3d(block.getX(), block.getY(), block.getZ());
             Vec3d playerPos = mc.player.getPos();
@@ -70,7 +70,7 @@ public class Reach extends Module {
                 return;
             }
             else {
-                setDisplayName(target.getName().getString());
+                setDisplayName(getName() + "[" + maxDistance.getValue() + "]" + " [" + target.getName().getString() + "]");
             }
 
             Vec3d playerPos = mc.player.getPos();

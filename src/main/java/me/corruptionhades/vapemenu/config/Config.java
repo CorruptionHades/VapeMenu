@@ -141,7 +141,7 @@ public class Config {
     public void setName(String name) {
         this.name = name;
         if(configFile != null) {
-            File copy = new File(configFile.getAbsolutePath(), name);
+            File copy = new File(name);
             configFile.renameTo(copy);
         }
     }

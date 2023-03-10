@@ -11,8 +11,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ClientPlayerEntity.class)
 public class ClientPlayerMixin {
 
-    @Inject(at = @At("HEAD"), method = "swingHand")
+    @Inject(at = @At("HEAD"), method = "swingHand", cancellable = true)
     public void swingHand(Hand hand, CallbackInfo ci) {
-        new HandSwingEvent(hand).call();
+        // Call the Hand Swing event
+        HandSwingEvent event = new HandSwingEvent(hand);
+        if(event.isCancelled()) ci.cancel();
     }
 }

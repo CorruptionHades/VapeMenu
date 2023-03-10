@@ -1,11 +1,17 @@
 package me.corruptionhades.vapemenu.utils;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.fabricmc.fabric.impl.client.indigo.renderer.helper.ColorHelper;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.font.Font;
+import net.minecraft.client.font.FontManager;
+import net.minecraft.client.font.FontStorage;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.MathHelper;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
 
@@ -14,6 +20,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 
+// This is a Helper class for drawing specific things to the screen
 public class RenderUtils {
 
     // Stolen from DrawableHelper
@@ -167,16 +174,24 @@ public class RenderUtils {
         }
     }
 
-    public static void drawTexturedRectangle(MatrixStack matrices, float x, float y, int width, int height, String path) {
+    public static void drawScaledTexturedRect(MatrixStack matrices, float x, float y, float scale, String path) {
+        // Scale
+        matrices.push();
+        matrices.scale(scale, scale, 0);
         // Bind the texture
         RenderSystem.setShaderTexture(0, new Identifier("vape_menu", path));
         try {
             URL url = RenderUtils.class.getResource("/assets/vape_menu/" + path);
+            // Get dimensions of image
             BufferedImage image = ImageIO.read(url);
-            DrawableHelper.drawTexture(matrices, (int) x, (int) y, 0.0f, 0.0f, width, height, image.getWidth(), image.getHeight());
-        } catch (Exception e) {
+            // Draw the image
+            DrawableHelper.drawTexture(matrices, (int) (x / scale), (int) (y / scale), 0.0f, 0.0f, image.getWidth(), image.getHeight(), image.getWidth(), image.getHeight());
+            matrices.pop();
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 
 }

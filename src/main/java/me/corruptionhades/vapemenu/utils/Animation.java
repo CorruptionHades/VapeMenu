@@ -1,7 +1,9 @@
 package me.corruptionhades.vapemenu.utils;
 
+// An Animation Utility class
 public class Animation {
 
+    // Values for
     private float end, current;
     private boolean done;
 
@@ -23,6 +25,8 @@ public class Animation {
         if (current != end) {
             current += ((end - current) / speed);
             if(cast) current = (int) current;
+
+            // Check for incrementing with float value
             if(Math.round(current) == end) current = end;
         }
         else done = true;
@@ -44,6 +48,7 @@ public class Animation {
         this.current = current;
     }
 
+    // Set the end
     public void setEnd(float end) {
         this.end = end;
         done = false;

@@ -20,6 +20,7 @@ public class InGameHudMixin {
         if(mc.player != null) {
             for(Module module : ModuleManager.INSTANCE.getEnabledModules()) {
                 if(module instanceof HudModule hudModule) {
+                    // Draws the Hud Modules to the screen
                     hudModule.draw(matrices);
                 }
             }

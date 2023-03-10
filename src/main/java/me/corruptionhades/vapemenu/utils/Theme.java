@@ -4,35 +4,36 @@ import java.awt.*;
 
 public class Theme {
 
-    public static Color WINDOW_COLOR = Color.white;
-    public static Color ENABLED = Color.white;
+    public static Color WINDOW_COLOR;
+    public static Color ENABLED;
 
-    public static Color UNFOCUSED_TEXT_COLOR = Color.white;
-    public static Color DISABLED_TEXT_COLOR = Color.white;
+    public static Color UNFOCUSED_TEXT_COLOR;
+    public static Color DISABLED_TEXT_COLOR;
 
-    public static Color SETTINGS_BG = Color.white;
-    public static Color SETTINGS_HEADER = Color.white;
+    public static Color SETTINGS_BG;
+    public static Color SETTINGS_HEADER;
 
-    public static Color MODULE_ENABLED_BG_HOVER = Color.white;
-    public static Color MODULE_DISABLED_BG_HOVER = Color.white;
+    public static Color MODULE_ENABLED_BG_HOVER;
+    public static Color MODULE_DISABLED_BG_HOVER;
 
-    public static Color MODULE_ENABLED_BG = Color.white;
-    public static Color MODULE_DISABLED_BG = Color.white;
-    public static Color MODULE_COLOR = Color.white;
-    public static Color MODULE_TEXT = Color.white;
+    public static Color MODULE_ENABLED_BG;
+    public static Color MODULE_DISABLED_BG;
+    public static Color MODULE_COLOR;
+    public static Color MODULE_TEXT;
 
-    public static Color TOGGLE_BUTTON_BG = Color.white;
-    public static Color TOGGLE_BUTTON_FILL = Color.white;
+    public static Color TOGGLE_BUTTON_BG;
+    public static Color TOGGLE_BUTTON_FILL;
 
-    public static Color NORMAL_TEXT_COLOR = Color.white;
+    public static Color NORMAL_TEXT_COLOR;
 
-    public static Color MODE_SETTING_BG = Color.white;
-    public static Color MODE_SETTING_FILL = Color.white;
+    public static Color MODE_SETTING_BG;
+    public static Color MODE_SETTING_FILL;
 
-    public static Color SLIDER_SETTING_BG = Color.white;
+    public static Color SLIDER_SETTING_BG;
 
-    public static Color CONFIG_EDIT_BG = Color.white;
+    public static Color CONFIG_EDIT_BG;
 
+    // This is to change the Click gui theme
     public static void darkTheme() {
         WINDOW_COLOR = new Color(21, 22, 25);
         ENABLED = new Color(51, 112, 203);

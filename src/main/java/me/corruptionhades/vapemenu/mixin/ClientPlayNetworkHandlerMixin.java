@@ -22,7 +22,7 @@ public abstract class ClientPlayNetworkHandlerMixin {
         new CommandSuggestEvent(packet).call();
     }
 
-    @Inject(method = "sendPacket", at = @At("HEAD"))
+    @Inject(method = "sendPacket", at = @At("HEAD"), cancellable = true)
     public void onSend(Packet<?> packet, CallbackInfo ci) {
         PacketSendEvent pse = new PacketSendEvent(packet);
         if(pse.isCancelled()) ci.cancel();

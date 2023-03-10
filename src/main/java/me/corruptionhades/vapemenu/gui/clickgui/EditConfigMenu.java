@@ -76,8 +76,8 @@ public class EditConfigMenu extends me.corruptionhades.vapemenu.gui.clickgui.com
             mc.textRenderer.draw(matrices, "Delete", pX + 315, pY + 185, -1);
         }
 
-        editing.setName(nameText.getText());
-        editing.setDescription(descriptionText.getText());
+        if(!nameText.isFocused()) editing.setName(nameText.getText());
+        if(!descriptionText.isFocused()) editing.setDescription(descriptionText.getText());
     }
 
     @Override

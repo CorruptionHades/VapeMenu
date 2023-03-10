@@ -20,7 +20,7 @@ public class ChatUtils {
     }
 
     public void sendPrefixMsg(String text) {
-        if(mc.player != null) mc.player.sendMessage(Text.of(VapeMenu.getPrefix() + translate(text)));
+        if(mc.player != null) mc.player.sendMessage(Text.of(translate(VapeMenu.getPrefix()) + translate(text)));
     }
 
     public String translate(String text) {

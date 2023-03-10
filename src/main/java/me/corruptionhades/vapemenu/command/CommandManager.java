@@ -1,5 +1,7 @@
 package me.corruptionhades.vapemenu.command;
 
+import me.corruptionhades.vapemenu.command.impl.TeleportCommand;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,7 @@ public class CommandManager {
     }
 
     private void init() {
+        add(new TeleportCommand());
     }
 
     public void add(Command command) {

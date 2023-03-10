@@ -3,16 +3,18 @@ package me.corruptionhades.vapemenu.gui;
 import me.corruptionhades.vapemenu.module.HudModule;
 import me.corruptionhades.vapemenu.module.Module;
 import me.corruptionhades.vapemenu.module.ModuleManager;
+import me.corruptionhades.vapemenu.utils.RenderUtils;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class HudConfigScreen extends Screen {
 
-    // List of all the Draggable components
+    // For every Hud mod there is a Draggable component, so you can drag it around
     public static final List<DraggableComponent> components = new ArrayList<>();
 
     public HudConfigScreen() {
@@ -23,6 +25,7 @@ public class HudConfigScreen extends Screen {
     protected void init() {
         // Add a new component for all enabled Hud Modules
         components.clear();
+        // Goes through all Modules that are Hud Modules and adds a new component
         for(Module module : ModuleManager.INSTANCE.getModules()) {
             if(module.isEnabled() && module instanceof HudModule hm) components.add(new DraggableComponent(hm));
         }
@@ -31,11 +34,12 @@ public class HudConfigScreen extends Screen {
 
     @Override
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        // Draw the Components
+        // Draw the Components if the corresponding Hud Module is enabled
         components.forEach(drag -> {
             if(drag.getModule().isEnabled())
                 drag.render(matrices, mouseX, mouseY);
         });
+
         super.render(matrices, mouseX, mouseY, delta);
     }
 

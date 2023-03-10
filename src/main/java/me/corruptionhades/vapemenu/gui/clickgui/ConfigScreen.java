@@ -32,26 +32,18 @@ public class ConfigScreen extends Component {
         this.parent = parent;
     }
 
-    // Ik that I named the method 'drawScreen' instead of 'render', but in 1.8 it's called 'drawScreen', and I'm more familiar with it
     @Override
     public void drawScreen(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        // Just some vars
+        // Get the Clickguis coordinates
         float pX = parent.windowX, pY = parent.windowY, pW = parent.width, pH = parent.height;
 
-        // "Your profiles" text duh
+        // "Your profiles" text
         mc.textRenderer.draw(matrices, "Your Profiles", pX + 20, pY + 50, Theme.MODULE_TEXT.getRGB());
         // Blue underline
         RenderUtils.renderRoundedQuad(matrices, pX + 20, pY + 50 + mc.textRenderer.fontHeight, pX + 30,  pY + 50 + mc.textRenderer.fontHeight + 2, 1, 20, Theme.ENABLED);
 
-        // + button
-        RenderUtils.drawCircle(matrices, pX + pW - 30, pY + pH - 30, 15, 30, -1);
-
-        // Scale the plus a bit
-        matrices.push();
-        // Cool tip: When scaling something, and you still want to use the original values where you drew it, just divide the coords by how much you scaled it
-        matrices.scale(2f, 2f, 0);                        // I divided by 2
-        mc.textRenderer.draw(matrices, "+", (int) ((pX + pW - 35) / 2), (int) ((pY + pH - 37) / 2), Color.BLACK.getRGB());
-        matrices.pop();
+        // Plus button
+        RenderUtils.drawScaledTexturedRect(matrices, pX + pW - 48, pY + pH - 50, 0.07f, "textures/add_button.png");
 
         matrices.push();
         matrices.scale(0.05f, 0.05f, 0);
@@ -117,7 +109,7 @@ public class ConfigScreen extends Component {
         if(editConfigMenu != null) editConfigMenu.drawScreen(matrices, mouseX, mouseY, delta);
     }
 
-    // ChatGPT method I had to alter a bit
+    // ChatGPT method I had to alter a bit to draw a wrapped string
     private void drawStringWrapped(MatrixStack matrices, String text, int x, int y, int boxSize) {
         MinecraftClient mc = MinecraftClient.getInstance();
         Text textObject = Text.of(text);
@@ -141,6 +133,7 @@ public class ConfigScreen extends Component {
             return;
         }
 
+        // Add a new config
         if(isHovered(pX + pW - 45, pY + pH - 45, pX + pW - 15, pY + pH - 15, mouseX, mouseY) && button == 0) {
             Config newConfig = new Config("Config Name", "Config Description");
             try {
@@ -165,7 +158,7 @@ public class ConfigScreen extends Component {
         int offsetY = 0;
         for(Config config : ConfigLoader.getConfigs()) {
 
-            // Edit
+            // Edit the config
             if(isHovered(pX + offsetX + 25, pY + offsetY + 136, pX + offsetX + 40, pY + offsetY + 150, mouseX, mouseY) && button == 0) {
                 editConfigMenu = new EditConfigMenu(this, config);
             }
