@@ -3,7 +3,10 @@
   "minVersion": "0.8",
   "package": "me.corruptionhades.vapemenu.mixin",
   "compatibilityLevel": "JAVA_17",
+  "mixins": [
+  ],
   "client": [
+    "ChatHudMixin",
     "ClientPlayerMixin",
     "ClientPlayNetworkHandlerMixin",
     "InGameHudMixin",

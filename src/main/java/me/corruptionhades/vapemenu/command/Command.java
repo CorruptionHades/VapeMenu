@@ -2,7 +2,7 @@ package me.corruptionhades.vapemenu.command;
 
 import me.corruptionhades.vapemenu.utils.ChatUtils;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.util.Uuids;
+import net.minecraft.util.dynamic.DynamicSerializableUuid;
 
 import java.util.Arrays;
 import java.util.List;
@@ -92,12 +92,12 @@ public abstract class Command {
     }
 
     public int[] convertUUID(UUID uuid) {
-        return Uuids.toIntArray(uuid);
+        return DynamicSerializableUuid.toIntArray(uuid);
     }
 
     public int[] convertUUID(String txt) {
         UUID uuid1 = UUID.fromString(txt);
-        return Uuids.toIntArray(uuid1);
+        return DynamicSerializableUuid.toIntArray(uuid1);
     }
 
     public String coordsToText(double x, double y, double z) {

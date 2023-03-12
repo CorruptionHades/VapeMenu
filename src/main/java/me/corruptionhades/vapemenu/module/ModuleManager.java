@@ -1,6 +1,7 @@
 package me.corruptionhades.vapemenu.module;
 
 import me.corruptionhades.vapemenu.module.impl.combat.Reach;
+import me.corruptionhades.vapemenu.module.impl.misc.JoinExploit;
 import me.corruptionhades.vapemenu.module.impl.misc.Plugins;
 import me.corruptionhades.vapemenu.module.impl.movement.Fly;
 import me.corruptionhades.vapemenu.module.impl.movement.Timer;
@@ -8,7 +9,6 @@ import me.corruptionhades.vapemenu.module.impl.render.Arraylist;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class ModuleManager {
 
@@ -26,6 +26,7 @@ public class ModuleManager {
         add(new Fly());
         add(new Arraylist());
         add(new Timer());
+        add(new JoinExploit());
     }
 
     public void add(Module m) {

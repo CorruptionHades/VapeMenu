@@ -3,12 +3,10 @@ package me.corruptionhades.vapemenu.gui;
 import me.corruptionhades.vapemenu.module.HudModule;
 import me.corruptionhades.vapemenu.module.Module;
 import me.corruptionhades.vapemenu.module.ModuleManager;
-import me.corruptionhades.vapemenu.utils.RenderUtils;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 

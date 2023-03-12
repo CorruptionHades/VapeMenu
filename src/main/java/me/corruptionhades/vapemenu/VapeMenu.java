@@ -1,20 +1,18 @@
 package me.corruptionhades.vapemenu;
 
-import me.corruptionhades.vapemenu.gui.HudConfigScreen;
-import me.corruptionhades.vapemenu.gui.clickgui.VapeClickGui;
 import me.corruptionhades.vapemenu.config.Config;
 import me.corruptionhades.vapemenu.config.ConfigLoader;
+import me.corruptionhades.vapemenu.gui.HudConfigScreen;
+import me.corruptionhades.vapemenu.gui.clickgui.VapeClickGui;
 import me.corruptionhades.vapemenu.module.Module;
 import me.corruptionhades.vapemenu.module.ModuleManager;
 import me.corruptionhades.vapemenu.utils.Theme;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
 
 import java.io.IOException;
 
-// This is the main Plugin class
 public class VapeMenu implements ModInitializer {
 
     // Instance of this class
@@ -30,10 +28,8 @@ public class VapeMenu implements ModInitializer {
     // The Config that is currently used
     public static Config selectedConfig;
 
-    // This method gets called when the mod is loaded
     @Override
     public void onInitialize() {
-
         // Loads configs if there are any
         try {
             ConfigLoader.loadConfigs();

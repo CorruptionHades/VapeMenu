@@ -206,7 +206,7 @@ public class VapeClickGui extends Screen {
             }
             else  {
                 matrices.push();
-                RenderSystem.setShader(GameRenderer::getPositionColorProgram);
+                RenderSystem.setShader(GameRenderer::getPositionColorShader);
                 RenderSystem.setShaderColor(0.25f, 0.25f, 0.25f, 1f);
                 RenderUtils.drawTexturedRectangle(matrices, windowX + 20, windowY + height - 50, "textures/back.png");
                 RenderSystem.clearColor(1f, 1f, 1f, 1f);
@@ -234,7 +234,7 @@ public class VapeClickGui extends Screen {
             }
             else  {
                 matrices.push();
-                RenderSystem.setShader(GameRenderer::getPositionColorProgram);
+                RenderSystem.setShader(GameRenderer::getPositionColorShader);
                 RenderSystem.setShaderColor(0.25f, 0.25f, 0.25f, 1f);
                 RenderUtils.drawTexturedRectangle(matrices, windowX + 20, windowY + height - 50, "textures/config.png");
                 matrices.pop();
@@ -337,7 +337,7 @@ public class VapeClickGui extends Screen {
 
     // Smoothly transitions between 2 values (stolen from Lune lol, the more fps you have the faster it will be (made for optimization purposes))
     public float smoothTrans(double current, double last){
-        return (float) (current + (last - current) / (MinecraftClient.getInstance().getCurrentFps() / 10));
+        return (float) (current + (last - current) / (Double.parseDouble(MinecraftClient.getInstance().fpsDebugString.split(" ")[0]) / 10));
     }
 
     @Override

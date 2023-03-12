@@ -1,19 +1,13 @@
 package me.corruptionhades.vapemenu.utils;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.fabricmc.fabric.impl.client.indigo.renderer.helper.ColorHelper;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.font.Font;
-import net.minecraft.client.font.FontManager;
-import net.minecraft.client.font.FontStorage;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Matrix4f;
 import org.jetbrains.annotations.NotNull;
-import org.joml.Matrix4f;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -45,13 +39,13 @@ public class RenderUtils {
         RenderSystem.enableBlend();
         RenderSystem.disableTexture();
         RenderSystem.defaultBlendFunc();
-        RenderSystem.setShader(GameRenderer::getPositionColorProgram);
+        RenderSystem.setShader(GameRenderer::getPositionColorShader);
         bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR);
         bufferBuilder.vertex(matrix, (float) x1, (float) y2, 0.0f).color(g, h, j, f).next();
         bufferBuilder.vertex(matrix, (float) x2, (float) y2, 0.0f).color(g, h, j, f).next();
         bufferBuilder.vertex(matrix, (float) x2, (float) y1, 0.0f).color(g, h, j, f).next();
         bufferBuilder.vertex(matrix, (float) x1, (float) y1, 0.0f).color(g, h, j, f).next();
-        BufferRenderer.drawWithGlobalProgram(bufferBuilder.end());
+        BufferRenderer.drawWithShader(bufferBuilder.end());
         RenderSystem.enableTexture();
         RenderSystem.disableBlend();
     }
@@ -74,7 +68,7 @@ public class RenderUtils {
         float k = (float) (color & 255) / 255.0F;
         RenderSystem.enableBlend();
         RenderSystem.disableTexture();
-        RenderSystem.setShader(GameRenderer::getPositionColorProgram);
+        RenderSystem.setShader(GameRenderer::getPositionColorShader);
 
         renderRoundedQuadInternal(matrix, g, h, k, f, fromX, fromY, toX, toY, rad, samples);
 
@@ -101,7 +95,7 @@ public class RenderUtils {
                 bufferBuilder.vertex(matrix, (float) current[0] + sin, (float) current[1] + cos, 0.0F).color(cr, cg, cb, ca).next();
             }
         }
-        BufferRenderer.drawWithGlobalProgram(bufferBuilder.end());
+        BufferRenderer.drawWithShader(bufferBuilder.end());
     }
 
     /**
@@ -127,7 +121,7 @@ public class RenderUtils {
         float blue = (float) (color & 255) / 255.0F;
         RenderSystem.enableBlend();
         RenderSystem.disableTexture();
-        RenderSystem.setShader(GameRenderer::getPositionColorProgram);
+        RenderSystem.setShader(GameRenderer::getPositionColorShader);
         Matrix4f matrix = matrices.peek().getPositionMatrix();
         BufferBuilder bufferBuilder = Tessellator.getInstance().getBuffer();
         bufferBuilder.begin(VertexFormat.DrawMode.TRIANGLE_FAN, VertexFormats.POSITION_COLOR);
@@ -139,7 +133,7 @@ public class RenderUtils {
             bufferBuilder.vertex(matrix, (float) centerX + sin, (float) centerY + cos, 0.0F).color(red, green, blue, alpha).next();
         }
 
-        BufferRenderer.drawWithGlobalProgram(bufferBuilder.end());
+        BufferRenderer.drawWithShader(bufferBuilder.end());
         RenderSystem.enableTexture();
         RenderSystem.disableBlend();
         RenderSystem.setShaderColor(1f, 1f, 1f, 1f);

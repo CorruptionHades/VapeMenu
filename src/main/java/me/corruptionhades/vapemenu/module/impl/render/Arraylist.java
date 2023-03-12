@@ -11,7 +11,7 @@ import java.util.List;
 public class Arraylist extends HudModule {
 
     public Arraylist() {
-        super("Arraylist", "Shows a lsit of enabled Modules", Category.RENDER, 0, 0, 1, 1);
+        super("Arraylist", "Shows a list of enabled Modules", Category.RENDER, 0, 0, 1, 1);
     }
 
     @Override

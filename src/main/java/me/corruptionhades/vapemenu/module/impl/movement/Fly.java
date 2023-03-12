@@ -4,19 +4,20 @@ import me.corruptionhades.vapemenu.event.EventTarget;
 import me.corruptionhades.vapemenu.event.impl.EventUpdate;
 import me.corruptionhades.vapemenu.module.Category;
 import me.corruptionhades.vapemenu.module.Module;
-import me.corruptionhades.vapemenu.setting.*;
+import me.corruptionhades.vapemenu.setting.BooleanSetting;
+import me.corruptionhades.vapemenu.setting.NumberSetting;
 import org.lwjgl.glfw.GLFW;
 
 public class Fly extends Module {
 
-    ModeSetting modeSetting = new ModeSetting("Mode", "Vanilla", "Vanilla", "Hypixel", "Vulcan");
+    //ModeSetting modeSetting = new ModeSetting("Mode", "Vanilla", "Vanilla", "Hypixel", "Vulcan");
     NumberSetting speed = new NumberSetting("Speed", 0.01, 1, 0.2, 0.01);
     BooleanSetting warn = new BooleanSetting("Warn", true);
 
     public Fly() {
         super("Fly", "Makes you fly!", Category.MOVEMENT);
         setKey(GLFW.GLFW_KEY_G);
-        addSettings(modeSetting, speed, warn);
+        addSettings(/*modeSetting,*/ speed, warn);
     }
 
     @EventTarget

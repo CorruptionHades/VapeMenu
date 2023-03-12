@@ -6,7 +6,8 @@ import net.fabricmc.api.Environment;
 
 @Environment(EnvType.CLIENT)
 public class VapeMenuClient implements ClientModInitializer {
-
     @Override
-    public void onInitializeClient() {}
+    public void onInitializeClient() {
+
+    }
 }

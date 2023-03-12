@@ -1,9 +1,9 @@
 package me.corruptionhades.vapemenu.gui.clickgui;
 
 import me.corruptionhades.vapemenu.VapeMenu;
-import me.corruptionhades.vapemenu.gui.clickgui.components.Component;
 import me.corruptionhades.vapemenu.config.Config;
 import me.corruptionhades.vapemenu.config.ConfigLoader;
+import me.corruptionhades.vapemenu.gui.clickgui.components.Component;
 import me.corruptionhades.vapemenu.utils.Animation;
 import me.corruptionhades.vapemenu.utils.RenderUtils;
 import me.corruptionhades.vapemenu.utils.Theme;
