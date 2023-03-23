@@ -7,6 +7,8 @@ Features:
   - Command System
   - Working Config system
   - Vape Based Clickgui
+  
+  Showcase: https://www.youtube.com/watch?v=OFiJojZT5Hk
 
 Credits:
   - Coffee Client for their rounded Utils: https://github.com/business-goose/Coffee/tree/master
