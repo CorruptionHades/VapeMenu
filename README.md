@@ -1,5 +1,5 @@
 # VapeMenu
-A Fabric Client base for 1.19.3
+A Fabric Client base for 1.19
 - Requires Fabric API
 
 Features:
